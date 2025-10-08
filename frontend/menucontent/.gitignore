@@ -1,8 +1,20 @@
-node_modules
-dist
-build
-.env
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# IDEs
+.vscode/
+*.idea/
+
+# Logs
 *.log
-.DS_Store
-.vscode
-.ideas
+
+# Any database dumps you don’t want to push
+*.sql
