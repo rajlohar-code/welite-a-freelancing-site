@@ -1,0 +1,446 @@
+/*#navbar{
+  background-color: whitesmoke;
+  min-height: 1.5rem;
+  display: flex;
+.navlinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem; 
+  
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #5c8997; /* or your preferred theme color  #d6e9df;#55818f; */
+}
+
+#navbar {
+    background-color: #ebf6f5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  position: fixed;
+  width : 100%;
+  display: flex;
+   align-items: center;
+  padding: 1rem 2rem;
+  height: 6rem;
+  z-index: 1000;
+  top: 0;
+}
+
+.logo{
+  flex-shrink: 0;
+}
+.logo img {
+  height: 6rem;
+  
+}
+
+.navlinks {
+  display: flex;
+  flex : 1;
+  align-items: center;
+  justify-content : space-evenly;
+  gap: 1.5rem;
+}
+#logged-in-nav{      
+  /* it will shows when user is loggedin */
+   display: flex;
+  flex : 1;
+  align-items: center;
+  justify-content : space-evenly;
+  gap: 1.5rem;
+}
+
+.navlinks a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+}
+.navlinks a:hover {
+  background-color: #b9e0e2;
+   
+}
+#search-button{
+  width: 3rem;
+  height:2rem;
+  border: none;
+  outline: none;
+  margin-left: 0px;
+  background-color: rgb(73, 72, 72);
+  color: white;
+  border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
+   font-weight: 600;
+}
+.search-container{
+  display: flex;
+  gap: 0px;
+  margin-left: 3rem;
+  border-radius: 10px ;
+  align-items: center;
+  width: 33rem;
+  
+  
+
+}
+
+#search-input {
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+  
+  width: 30rem;
+}
+.hero{
+  background-color: #e3f7e1;
+  height : 30rem;
+width :90%;
+  margin: 7rem  auto;
+  margin-bottom: 3rem;
+    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  
+}
+.hero video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+#inhero {
+  position: absolute;
+  top: 43%;                 /* Vertically center */
+  left: 120px;               /* Push it away from the left side */
+  transform: translateY(-50%); /* Adjust vertical centering only */
+  color: white;
+    background-color: rgba(0, 0, 0, 0.4); /* dark overlay */
+     backdrop-filter: blur(1px);
+  padding: 50px 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-radius:15px;
+  border: 1px solid black;
+  z-index: 10;
+  text-align: left;
+width : 500px;
+height : 250px;
+color: wheat;
+}
+
+#inhero a{
+  background-color: aquamarine;
+  height: 15rem;
+  width : 10rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(13, 23, 4);
+   border-color: aquamarine;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  outline : none;
+  text-decoration: none;
+  padding: 0.5rem;
+  
+}
+#inhero h1{
+margin-bottom: 1rem;
+}
+#inhero a:hover {
+  background-color: #42b8ea;
+  color: black; 
+}
+  
+ 
+ /******************************************************************************************************************************
+ 
+ /******************************************************************************************************************************
+  //  after hero */
+  #afterHero{
+      background-color: whitesmoke;
+  height : 50rem;
+  width :90%; 
+  margin: 2rem  auto;
+  margin-bottom: 3rem;
+
+ 
+   
+  border-radius: 20px;
+}
+.afterHeroMenu{
+    justify-content:space-between;
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.menubuttons{
+  width: 12%;
+  height: 95%;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-radius: 1rem;
+  margin: 0.1rem;
+  border: none;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+.menubuttons:hover{
+   background-color: rgb(241, 238, 238);
+}
+.menubuttons:active{
+  border: 1px solid grey;
+}
+      
+.menuIcon{
+  font-size: 1.5rem;
+  padding: 8px;
+}
+.menuContentPlaceholder{
+  height: 44rem;
+  width: 100%;
+  background-color:whitesmoke;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.menuImages{
+  
+  width: 90%;
+  height: 90%;
+  align-items: center;
+  margin: 1rem auto;
+  background-color: rgb(255, 145, 0);
+  
+  }
+  
+  #popularServices{
+     
+    width: 70%;
+    margin: 2rem auto;
+     
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:  space-between;
+    padding: 1rem;
+    padding-bottom:1rem;
+  }
+  .popularServiceContainer{
+    background-color: rgb(223, 219, 219);
+    height:16rem;
+    width: 15rem;
+    margin: 1.5rem  ;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 30%)*/
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .popularServiceContainer:hover{
+    transform: scale(0.95);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+  #popularServices a{
+    text-decoration: none;
+    color: #333;
+  }
+  .popularServiceImage{
+    height:13rem;
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+     }
+
+   .commentShots{
+    
+    width: 80%;
+    margin: 2rem auto;
+      
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:  space-between;
+    padding: 1rem;
+    padding-bottom:1rem;
+   }  
+   .commentshotContainer{
+     background-color: rgb(247, 240, 240);
+    height:10rem;
+    width: 22rem;
+    margin: 1rem  ;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 30%)
+     
+   }
+   .commentname{
+    color: rgb(143, 136, 136);
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    margin-left: 8px;
+   }
+   .comment{
+     margin-left: 8px;
+   }
+    
+   #serviceSuggessions{
+     width: 80%;
+    margin: 2rem auto;
+        
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 1rem;
+    padding-bottom:1rem;
+    margin-bottom: 0%;
+    
+   }
+    .suggestion{
+    background-color: rgb(251, 249, 249);
+    height:3rem;
+    width: fit-content;
+    margin: 1rem  ;
+    border-radius: 2rem;
+     
+     
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 30%)
+   }
+    #serviceSuggessions a{
+      text-decoration: none;
+      color: #333;
+      font-weight:900 ;
+       
+    }
+    .suggestion:hover{
+      background-color: rgb(175, 237, 237);
+    }
+    
+    /* style for usersidebar +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+    #userSideBar{
+      width: 300px;
+      height: 85vh;
+      right: -350px;
+      position: fixed;
+      margin-right: 0px;
+      margin-top: 0px;
+      z-index: 3000;
+      
+      transition: right 0.4s ease;
+      border-radius: 40px;
+      background-color: rgba(9, 1, 1, 0.4); /* dark overlay */
+     backdrop-filter: blur(7px);
+    }
+   #profileBut{
+    border: 2px solid;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+   }
+   #genInfo{
+    padding-bottom: 1rem;
+    display: flex;
+    color: aliceblue;
+    flex-direction: column;
+   }
+
+ #userSideBar{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+ }
+ #sidebarOptions{
+  display: flex;
+  padding: 1rem;
+    display: flex;
+    color: aliceblue;
+    flex-direction: column;
+ }
+ .sidebaroption{
+  text-decoration: none;
+  color: aliceblue;
+   padding: 0.3rem;
+  font-size: 1.2rem;
+ }
+
+
+ /*   FOOTER    */
+  .footer{
+    background-color: rgb(70, 70, 70);
+      width: 100%;
+    height: 20rem;
+  }
+  #footerContent{
+      width: 100%;
+    height: 20rem;
+    
+     
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: aliceblue;
+    justify-content: center ;
+  
+    padding: 2rem;
+    font-size: 1.2rem;
+     }
+     .discover{
+      padding: 2rem;
+     }
+     .addon{
+      padding: 2rem;
+     }
+     .rights{
+      background-color: rgb(70, 70, 70);
+       width: 100%;
+       color: aliceblue;
+     }
+
+     /*  home page menu contents  */
+       .menuContent{
+  background-image: url('../images/Assembly.jpg');
+  background-size: cover;
+  width: 90%;
+  height: 90%;
+  align-items: center;
+  margin: 1rem auto;
+
+  background-repeat: no-repeat;
+  padding: 2rem;
+  }
+  .menuContentcard{
+    width: 20rem;
+    height: 20rem;
+   background-color: #F6A88E;
+   margin: 3rem;
+   padding: 1rem;
+  }
+  
+
+    /* This is the style for the hidden menu */
+        

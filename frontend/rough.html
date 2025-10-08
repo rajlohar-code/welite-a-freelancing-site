@@ -1,0 +1,395 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WELITE : BRIDGE THE SKILLS WITH COMFORT</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head> 
+<body>
+      <NAV id="navbar">
+   <div class="logo">
+    <a id="logolink"> 
+      <h1 id="logo"> 
+        <img src="images/welitelogo2.png" alt="logo">
+      </h1>
+    </a>
+  </div>  
+  <div class="navlinks">
+     <input type="text" placeholder="Search..." id="search">
+     <!-- <a href="index.html">Home</a> -->
+       <a href="login.html">Freelance</a>
+       <a href="services.html">Services </a>
+       <a   id="shop">Shop</a>
+      <a href="signup.html">Sign up</a>
+      <a href="login.html">Login</a>
+
+  </div>
+</NAV>
+ 
+<div id="content"></div>
+ 
+<div id="foot"></div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ <script>
+  AOS.init();
+  // Load home2.html initially
+  const content = document.getElementById('content');
+  fetch("home2.html")
+    .then(res => res.text())
+    .then(data => {
+      content.innerHTML = data;
+      attachMenuEvents(); // <--- Attach after injecting home2
+    });
+ 
+
+
+  // Handle logo click (load home2.html again)
+  document.getElementById('logolink').addEventListener('click', (e) => {
+    e.preventDefault();
+    fetch("home2.html")
+      .then(res => res.text())
+      .then(data => {
+        content.innerHTML = data;
+        attachMenuEvents(); // <--- Attach again after logo click
+      });
+  });
+
+  // Handle shop page
+  document.getElementById('shop').addEventListener('click', (e) => {
+    e.preventDefault();
+    fetch("navbarpages/shop.html")
+      .then(res => res.text())
+      .then(data => {
+        content.innerHTML = data;
+      });
+  });
+
+  // Load footer
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('foot').innerHTML = data;
+    });
+
+  // 🧠 Function to attach events AFTER home2 is loaded
+  function attachMenuEvents() {
+    const menubuttons = document.querySelectorAll('.menubuttons');
+    const menucontentdisplay = document.querySelector('.menuContentPlaceholder');
+     
+    menubuttons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        const id = e.currentTarget.id;
+        console.log("Clicked:", id);
+        
+         
+
+        if (id) {
+          fetch(`menucontent/${id}.html`)
+            .then(res => res.text())
+            .then(data => {
+              menucontentdisplay.innerHTML = data;
+            });
+        }
+         
+      });
+    });
+  }
+
+ localStorage.clear();
+
+
+   
+ 
+</script>
+
+   `<script src="signlog.js"></script>
+</body>
+</html>
+
+
+
+<!--    freelancerlog.js -->
+
+
+
+// we have three forms for freelancer 
+// 1 : skillAdd
+// 2: formDiv
+// 3 :  bioform  these are id's of forms 
+
+// FUNCTION TO GET FREELANCERS FROM LOCAL STORAGE 
+// function getfreelancers(){
+//   return JSON.parse(localStorage.getItem('freelancers')) || [];
+// }
+
+// FUNCTION TO SET FREELANCERS TO LOCAL STORAGE
+   
+// function setFreelancer(newFreelancer) {
+//   let existing = JSON.parse(localStorage.getItem("freelancers")) || [];
+
+//   existing.push(newFreelancer); // Add the new one to the array
+
+//   localStorage.setItem("freelancers", JSON.stringify(existing));
+// }
+
+// ACCESSING ALL FORMS 
+const skillAdd = document.getElementById('skillAdd');
+const formDiv = document.getElementById('formDiv');
+const bioform=document.getElementById('bioform');
+const freelancers ={};  // creating onject in which all data will be stored 
+
+
+if(skillAdd){
+   skillAdd.addEventListener('submit',(e)=>{
+     e.preventDefault();
+     freelancers.skillInfo = {
+      address : e.target.area.value.trim(),
+      Skill : e.target.skill.value.trim()
+     }
+      
+     document.getElementById('biopage').scrollIntoView({ behavior: 'smooth' });
+   })
+}
+
+ 
+
+if (bioform) {
+  bioform.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const profilePicData = document.getElementById("imageData").value;
+    const freelancerBio = document.getElementById("bio").value.trim();
+
+    freelancers.bioInfo = {
+      freelancerbio: freelancerBio,
+       profilePic : profilePicData
+    };
+
+    // const completeFreelancer = JSON.parse(JSON.stringify(freelancers)); // ✅ deep copy
+
+  //   setFreelancer(completeFreelancer); // ✅ store safely
+  //  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+  //    loggedInUser.userIsFreelancer = true; // ✅ mark as freelancer
+  //    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser)); // ✅
+
+    alert(`Hey ${freelancers.personalInfo.freelancerName.toUpperCase()}, Congrats 🙌 it's time to earn big`);
+    //  localStorage.setItem('currentfreelancerEmail', freelancers.personalInfo.freelancerId);
+    window.location.href='freelancerPage.html';
+    // localStorage.setItem('isfreelancerRegistered','true');
+     
+     
+//     // ✅ Reset main object to avoid reusing
+//     for (let key in freelancers) delete freelancers[key];
+//   });
+// }
+
+// // LOGIN FUNCTIONALITY FOR FREELANCER
+
+// const freelancerloginBtn = document.getElementById('loginBtn');
+// const loginform = document.getElementById('freelancerLoginForm');
+
+// if(loginform){
+//   loginform.addEventListener('submit', (e) => {
+//     e.preventDefault();
+
+//     const email = document.getElementById('freelancerEmail').value.trim();
+//     const password = document.getElementById('freelancerPassword').value.trim();
+
+//     const freelancers = getfreelancers();
+//      const user = freelancers.find(user => user.personalInfo.freelancerId === email && user.personalInfo.freelancerPassword === password);
+//     if (user) {
+//       localStorage.setItem('currentfreelancerEmail', user.personalInfo.freelancerId);
+//       localStorage.setItem('isfreelancerRegistered', 'true');
+//       alert(`Welcome back, ${user.personalInfo.freelancerName}!`);
+//       window.location.href = 'freelancerPage.html';
+//     }
+//     else {
+//       alert("Invalid email or password. Please try again.");
+//     }
+//   });
+// }
+
+ 
+  
+
+
+
+
+<!--   slider -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELITE : BRIDGE THE SKILLS WITH COMFORT</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- ========== NEW CSS FOR THE SLIDE-OUT MENU ========== -->
+    <!-- <style>
+        /* This is the style for the hidden menu */
+        .slide-out-menu {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Start off-screen */
+            width: 280px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            padding: 20px;
+            transition: right 0.3s ease-in-out; /* Smooth slide animation */
+            z-index: 1001; /* Make sure it's on top of other content */
+        }
+
+        /* This is the style we add with JavaScript to make it appear */
+        .slide-out-menu.is-active {
+            right: 0; /* Slide into view */
+        }
+
+        /* Simple styling for the menu content */
+        .slide-out-menu h3 {
+            margin-top: 0;
+        }
+        .slide-out-menu .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .slide-out-menu a {
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+        .profile-icon {
+            cursor: pointer;
+        }
+    </style> -->
+</head> 
+<body>
+    
+    <!-- ========== NAVIGATION BAR ========== -->
+    <nav id="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <h1 id="logo"> 
+                    <img src="images/welitelogo2.png" alt="logo">
+                </h1>
+            </a>
+        </div> 
+        <div class="navlinks">
+            <input type="text" placeholder="Search..." id="search">
+            
+            <!-- 1. The links for LOGGED OUT users -->
+            <div id="logged-out-nav">
+                <a href="freelanceSign.html">Freelance</a>
+                <a href="services.html">Services</a>
+                <a href="shop.html">Shop</a>
+                <a href="signup.html">Sign up</a>
+                <a href="login.html">Login</a>
+            </div>
+
+            <!-- 2. The links for LOGGED IN users. It's hidden at first. -->
+            <div id="logged-in-nav" style="display: none;">
+                <a href="freelanceSign.html">Become a Worker</a>
+                <a href="dashboard.html">My Tasks</a>
+                <!-- THIS IS THE NEW PROFILE ICON -->
+                <a href="#" class="profile-icon" id="profileIcon"><i class="fa-solid fa-user-circle fa-2x"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== NEW HIDDEN SLIDE-OUT MENU ========== -->
+    <div class="slide-out-menu" id="slideOutMenu">
+        <span class="close-btn" id="closeMenuBtn">&times;</span>
+        <h3>My Account</h3>
+        <a href="profile.html">View Profile</a>
+        <a href="settings.html">Account Settings</a>
+        <a href="#" id="logoutBtn">Logout</a>
+    </div>
+
+    <!-- ========== MAIN CONTENT (Your code is perfect here) ========== -->
+    <main>
+        <!-- All of your hero section, services, etc. goes here -->
+        <div class="hero">
+            <video autoplay muted loop id="heroVideo">  
+                <source src="images/weliteThemeVid.mp4" type="video/mp4">
+            </video>
+            <div id="inhero">
+                <h1>Bringing Skilled Hands Closer to You.</h1>
+                <a href="#popularServices">Let’s Find Your Pro</a> 
+            </div>
+        </div>
+        <!-- ... the rest of your page content ... -->
+    </main>
+    
+    <!-- ========== FOOTER ========== -->
+    <footer id="foot">
+        <p>&copy; 2025 Welite. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    
+    <script src="js/app.js"></script> 
+    <script src="js/home.js"></script>
+    <!-- We will add the linkHandler script back later when we are ready -->
+    <!-- <script src="js/linkHandler.js"></script> -->
+</body>
+</html>
+
+
+<!--   CSS FOR SIDE BAR IN STYLE.CSS
+    -->
+ .slide-out-menu {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Start off-screen */
+            width: 280px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            padding: 20px;
+            transition: right 0.3s ease-in-out; /* Smooth slide animation */
+            z-index: 1001; /* Make sure it's on top of other content */
+        }
+
+        /* This is the style we add with JavaScript to make it appear */
+        .slide-out-menu.is-active {
+            right: 0; /* Slide into view */
+        }
+
+        /* Simple styling for the menu content */
+        .slide-out-menu h3 {
+            margin-top: 0;
+        }
+        .slide-out-menu .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .slide-out-menu a {
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+        .profile-icon {
+            cursor: pointer;
+        }
+

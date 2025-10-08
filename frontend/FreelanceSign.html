@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Welite as Freelancer</title>
+  
+  
+  
+  <link rel="stylesheet" href="css/freelanceStyle.css">
+</head>
+<body>
+  <div class="freelanceHero">
+    <div class="freelanceBanner">
+          
+    </div>
+     
+    <div class="moneyGuess">
+      <form id="skillAdd" action="" method="get"> 
+      <h1 class="moneyGuessHeading">Be Your Own Boss ! Join Welite</h1>
+      <h2 style="color: black;">See how much you can make on welite </h2>
+           <div class="selectForFreelance"> 
+       <div class="selectArea">
+    <label class="selectLabel" for="area">Choose Your Area:</label>
+    <select class="selectBox" id="area" name="area">
+        <!-- This will be filled automatically by our smart JavaScript! -->
+        <option value="">Loading locations...</option>
+    </select>
+</div>
+     <div class="selectSkill"> 
+    <label class="selectLabel" for="skill">Select Your Skill Domain:</label>
+    <select class="selectBox" id="skill" name="skill">
+        <!-- This will be filled automatically by our smart JavaScript! -->
+        <option value="">Loading skills...</option>
+    </select>
+</div>
+       <div class="priceEstimation">
+        <h3 class="price">upto</h3>
+        <h1 class="price">₹1800</h1>
+        <h3 class="price">per Hour</h3>
+       </div>
+       <button type="submit" id="firstSubmit">Get Started </button>
+        
+    </div>
+
+
+    </div>
+   </form>
+    
+  </div>
+  
+   <div id="biopage">
+     
+     <div class="biodiv">
+      <form id="bioform"    method="post" >
+          
+           <h3 id="uploadheading">Upload Profile Picture</h3>
+           <label class="profile-upload"> 
+            
+    <input type="file" accept="image/*" id="imageInput" style="display: none;" />
+    <input type="hidden" id="imageData" name="profilePicData">
+     <div class="placeholder" id="placeholder"> <img id="default"  src="images/profilepic.png"/></div>
+      <img id="preview" style="display: none;" />
+       </label>
+        <input type="text" name="username" placeholder="Enter your username" required id="username">
+
+
+
+       <div class="bio"> 
+        <textarea name="bio" id="bio" rows="6" cols="30" placeholder="Write your bio here..."  name="bio"></textarea>
+      </div>
+         <button id="bioSubmit" type="submit">Submit</button>
+
+        </form>
+     </div>
+     <div class="freelanceIntro">
+       
+       <img src="images/weliteProfileDemo.png" alt="hey there is an image " id="weliteProfileDemo">
+
+     </div>
+
+   </div>
+
+   
+
+
+ 
+   <script src="js/freelanceLog.js"></script>
+  
+</body>
+</html>

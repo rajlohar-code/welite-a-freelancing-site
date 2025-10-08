@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Pro - Welite</title>
+    <!-- We can use our main style.css for the navbar and add some new styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header { text-align: center; margin: 40px 20px; }
+        .workers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .worker-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .worker-card img {
+            margin-top: 5px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px blue;
+
+
+        }
+        .worker-card h3 { margin: 10px 0 5px; }
+        .worker-card p { margin: 0; color: #777; }
+        .hire-btn {
+            background-color: #4CAF50; /* A nice green color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .hire-btn:hover {
+            background-color: #45a049; /* A slightly darker green for hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- We can include a simple navbar here, or just the main content -->
+
+    <div class="page-header">
+        <h1 id="page-title">Our Professionals</h1>
+    </div>
+
+    <!-- This is the empty container where our JavaScript will build the cards -->
+    <div class="workers-grid" id="workers-container">
+        <p>Loading professionals...</p>
+    </div>
+
+    <script src="js/workers.js"></script>
+</body>
+</html>

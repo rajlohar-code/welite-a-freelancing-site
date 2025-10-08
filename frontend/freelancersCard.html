@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    #cardContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+       background-color: rgb(252, 252, 252);
+      padding: 20px;
+      margin: 2rem auto;
+      max-width: 1200px;
+    } 
+  </style>
+</head>
+<body>
+  <div id="cardContainer">
+
+
+  </div>  
+  <script>
+    // Sample data for freelancers
+   const allfreelancers  = JSON.parse(localStorage.getItem("freelancers")) || [];
+    const cardContainer = document.getElementById('cardContainer');
+    allfreelancers.forEach(freelancer => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.border = '1px solid #ccc';
+      card.style.borderRadius = '8px';
+      card.style.padding = '16px';
+      card.style.margin = '10px';
+      card.style.width = '500px';
+      card.style.display = 'flex';
+      
+      card.style.flexDirection = 'column';
+      card.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+
+
+      
+      // creating hire  button
+       
+
+      // to show  profile picture
+      const profileImage = document.createElement('img');
+      profileImage.src = freelancer.bioInfo.profilePic || 'profilepic.png'; // Default image if not set
+      profileImage.alt = 'Profile Picture';
+      profileImage.style.width = '100px';
+      profileImage.style.height = '100px';  
+      profileImage.style.borderRadius = '50%';
+      profileImage.style.objectFit = 'cover';
+      
+      const name = document.createElement('h3');
+      name.textContent = freelancer.personalInfo.freelancerName;
+      
+      const skills = document.createElement('p');
+      skills.textContent = `Skills: ${freelancer.skillInfo.Skill}`;
+      
+      const rate = document.createElement('p');
+      rate.textContent = `Rate: ${freelancer.skillInfo.price} ${freelancer.skillInfo.priceContext}`;
+      rate.style.color = 'green';
+      rate.style.fontWeight = 'bold'; 
+
+       
+
+      const description = document.createElement('p');
+      description.textContent = freelancer.bioInfo.freelancerbio;
+      description.style.fontStyle = 'italic';
+      description.style.marginBottom = '10px';
+      description.style.color = '#555';
+      description.style.textAlign = 'justify';
+      description.style.lineHeight = '1.5';
+      description.style.fontSize = '14px';
+      description.style.overflow = 'hidden';
+      description.style.whiteSpace = 'normal';
+      description.style.wordWrap= 'break-word';
+      description.style.webkitLineClamp = '3'; // Limit to 3 lines
+
+      // to show location
+      const location = document.createElement('p');
+      location.textContent = `Location: ${freelancer.skillInfo.address}`; 
+     location.style.marginBottom = '10px';
+
+
+    // creating a hire button
+   const hireButton = document.createElement('button');
+      hireButton.textContent = 'Hire';
+      hireButton.style.backgroundColor = '#28a745';
+      hireButton.style.color = 'white';
+      hireButton.style.border = 'none';
+      hireButton.style.borderRadius = '4px';
+      hireButton.style.padding = '10px 15px';
+      hireButton.style.cursor = 'pointer';
+      hireButton.style.width = '100px';
+     
+      // giving a uinque id to hire button which is email id of freelancer
+      hireButton.id = `hire-${freelancer.personalInfo.freelancerEmail}`;
+      hireButton.addEventListener('click', () => {
+        alert(`You have hired ${freelancer.personalInfo.freelancerName}`);
+        // Here you can add functionality to handle the hiring process
+      });
+
+      card.appendChild(hireButton);
+      card.prepend(profileImage);
+      card.appendChild(name);
+      card.appendChild(skills);
+      card.appendChild(location);
+      card.appendChild(rate);
+      card.appendChild(description);
+      card.appendChild(hireButton);
+
+      cardContainer.appendChild(card);
+    });
+    </script>
+</body>
+</html>

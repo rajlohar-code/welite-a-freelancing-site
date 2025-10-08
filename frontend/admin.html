@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welite Admin Panel</title>
+    <!-- Using Font Awesome for beautiful icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary-blue: #2c5c8a;
+            --light-blue: #f0f5fa;
+            --primary-green: #4caf50;
+            --light-gray: #f4f7f6;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #757575;
+            --white: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--light-gray);
+            margin: 0;
+            display: flex; /* Creates the sidebar layout */
+            min-height: 100vh;
+            flex-direction: row;
+        }
+        .sidebar {
+    width: 240px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .sidebar-nav a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .sidebar-nav a i {
+            margin-right: 10px;
+        }
+       .main-content {
+         margin-left: 250px; /* Pushes content beside the sidebar */
+          padding: 40px;
+          flex-grow: 1;
+      }
+        h1, h2 {
+            color: #333;
+        }
+        h2 i {
+            margin-right: 10px;
+        }
+        .admin-section {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid var(--medium-gray);
+            text-align: left;
+        }
+        th {
+            background-color: var(--light-blue);
+        }
+        tr:hover {
+            background-color: var(--light-blue);
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            margin-right: 10px;
+            width: 250px;
+        }
+        button {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .filter-container {
+            margin-bottom: 15px;
+        }
+        select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid var(--medium-gray);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo">Welite Admin</div>
+        <nav class="sidebar-nav">
+            <a href="#role-filte" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="#"><i class="fas fa-users"></i> Users</a>
+            <a href="#add-location-form"><i class="fas fa-map-marker-alt"></i> Locations</a>
+            <a href="#add-skill-form"><i class="fas fa-tools"></i> Skills</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <h1>Head Office Dashboard</h1>
+
+        <!-- Section for Managing Users -->
+        <div class="admin-section">
+            <h2><i class="fas fa-users"></i> Manage Staff & Customers</h2>
+            <div class="filter-container">
+                <label for="role-filter">Filter by Role:</label>
+                <select id="role-filter">
+                    <option value="all">All</option>
+                    <option value="client">Clients Only</option>
+                    <option value="worker">Workers Only</option>
+                </select>
+            </div>
+           <!-- In frontend/admin.html -->
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>skill</th>
+                        
+                        <th>Actions</th> <!-- <-- ADD THIS NEW COLUMN HEADER -->
+
+                    </tr>
+                </thead>
+                <tbody id="user-table-body">
+                    <tr><td colspan="5">Loading users...</td></tr> <!-- Note: colspan is now 5 -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section for Managing Locations -->
+        <div class="admin-section">
+            <h2><i class="fas fa-map-marker-alt"></i> Manage Locations</h2>
+            <form id="add-location-form">
+                <input type="text" id="new-location-name" placeholder="Enter new location (e.g., Surat)" required>
+                <button type="submit">Add Location</button>
+            </form>
+        </div>
+
+        <!-- Section for Managing Skills -->
+        <div class="admin-section">
+            <h2><i class="fas fa-tools"></i> Manage Job Types (Skills)</h2>
+            <form id="add-skill-form">
+                <input type="text" id="new-skill-name" placeholder="Enter new skill (e.g., Gardening)" required>
+                <button type="submit">Add Skill</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
+

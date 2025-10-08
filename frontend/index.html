@@ -1,0 +1,220 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELITE : BRIDGE THE SKILLS WITH COMFORT</title>
+    <!-- I am keeping your exact CSS links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head> 
+<body>
+    
+    <!-- ========== NAVIGATION BAR ========== -->
+       <nav id="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <h1 id="logo"> 
+                    <img src="images/weliteLOGO (2).png" alt="logo">
+                </h1>
+            </a>
+        </div> 
+        <div class="navlinks">
+            <!-- ONE Search Bar for everyone -->
+            <form id="search-form" class="search-container">
+                <input type="text" placeholder="Search for skills, cities, or users..." id="search-input">
+                <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+            </form>
+            
+            <!-- ONE set of links for everyone -->
+            <a href="#" id="freelanceLink">Freelance</a>
+            <a href="services.html">Services</a>
+            <a href="shop.html">Shop</a>
+            
+            <!-- THE MAGIC SWITCH: This is the only part that changes -->
+            <div id="logged-out-nav">
+                <a href="signup.html">Sign up</a>
+                <a href="login.html">Login</a>
+            </div>
+            <div id="logged-in-nav" style="display: none;">
+                <a href="#" class="profile-icon" id="profileIcon"><i class="fa-solid fa-user-circle fa-2x"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <aside id="userSideBar">
+  <div id="genInfo">
+    <h3>Welcome</h3>
+    <h3 id="welcomeMessage"></h3>
+   </div>
+   <hr><hr><hr><hr><hr>
+   <div id="sidebarOptions">
+
+     <a class="sidebaroption" href="">Waitlist</a>
+       <a class="sidebaroption" href="">Rate us</a>
+         <a class="sidebaroption" id="logoutBtn" href="">Log Out =></a>
+  </div>
+  
+   
+</aside>
+    
+    <!-- ========== MAIN CONTENT ========== -->
+    
+    <main>
+        <div class="hero">
+            <video autoplay muted loop id="heroVideo">  
+                <source src="images/weliteThemeVid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div id="inhero">
+                <h1>Bringing Skilled Hands Closer to You.</h1>
+                <a href="#popularServices">Let’s Find Your Pro</a> 
+            </div>
+        </div>
+
+        <div id="afterHero">
+            <div class="afterHeroMenu">
+                <button class="menubuttons" id="Assembly"><i class="fa-solid fa-screwdriver-wrench menuIcon"></i>Assembly</button>
+                <button class="menubuttons" id="Cleaning"> <i class="fa-solid fa-broom-ball menuIcon" ></i>Cleaning</button>
+                <button class="menubuttons" id="Lightman"><i class="fa-solid fa-lightbulb menuIcon"></i>Lightman</button>
+                <button class="menubuttons" id="Installation"> <i class="fa-solid fa-tv menuIcon "></i>Installation</button>
+                <button class="menubuttons" id="Carpenter"> <i class="fa-solid fa-couch menuIcon"></i>Carpenter</button>
+                <button class="menubuttons" id="Grooming"> <i class="fa-solid fa-person-dress-burst menuIcon"></i>Grooming</button>
+                <button class="menubuttons" id="Paint"><i class="fa-solid fa-paint-roller menuIcon"></i>Paint</button>
+                <button class="menubuttons" id="Kitchen"><i class="fa-solid fa-burger menuIcon"></i> Kitchen  </button>
+                <button class="menubuttons" id="Moving"><i class="fa-solid fa-truck-moving menuIcon"></i>Moving</button>
+            </div>
+            <div class="menuContentPlaceholder">
+                <div class="menuContent">
+                    <div class="menuContentcard">
+                        <h2>Get your furniture assembled with Your local experts !</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h1 style="margin-left: 5rem;">Most Booked Services</h1>
+        <div id="popularServices" data-aos="fade-up" data-aos-duration="1000"> 
+            <a href="workers.html?skill=cleaning" class="protected-link"><div class="popularServiceContainer">
+                <img class="popularServiceImage" src="images/cleaning.jpg" alt="">
+                <h3>Home cleaning</h3>
+                <h5>Project starts at 30$</h5>
+            </div></a>
+            <a href= "workers.html?skill=Helper" class="protected-link"><div class="popularServiceContainer">
+                <img class="popularServiceImage" src="images/packer.jpg" alt="">
+                <h3>Moving stuff</h3>
+                <h5>Project starts at 25$</h5>
+            </div></a> 
+            <a href="workers.html?skill=Plumbing" class="protected-link"><div class="popularServiceContainer">
+                <img class="popularServiceImage" src="images/plumber.jpg" alt="">
+                <h3>Fix Your tap</h3>
+                <h5>Project starts at 35$</h5>
+            </div></a> 
+            <a href="workers.html?skill=Painting" class="protected-link"><div class="popularServiceContainer">
+                <img class="popularServiceImage" src="images/painter.jpg" alt="">
+                <h3>Paint your basement</h3>
+                <h5>Project starts at 35$</h5>
+            </div></a>    
+            <a href="workers.html?skill=Carpenter" class="protected-link"><div class="popularServiceContainer">
+                <img class="popularServiceImage" src="images/carpenter.jpg" alt="">
+                <h3>Fix your Window</h3>
+                <h5>Project starts at 50$</h5>
+            </div></a> 
+            <a href="workers.html?skill=Barber" class="protected-link"><div class="popularServiceContainer">
+                <img class="popularServiceImage" src="images/barber.jpg" alt="">
+                <h3>Hair cutting</h3>
+                <h5>Project starts at 20$</h5>
+            </div></a> 
+        </div>
+
+        <h1 style="margin-left: 5rem;">What People Say About Us</h1>
+        <div class="commentShots" data-aos="fade-up" data-aos-duration="1000">
+            <div class="commentshotContainer">
+                <h4 class="commentname">@doraemon⭐⭐⭐⭐⭐</h4>
+                <h4 class="comment">wow, you are amazing guys, i booked a cleaning service got my pocket cleaned but the thing now i cant get my gadgets as well</h4>
+            </div>
+            <div class="commentshotContainer">
+                <h4 class="commentname">@modiji⭐⭐⭐⭐</h4>
+                <h4 class="comment">hello mitro ,while watching godimedia, my tv stucked, but i was chill as i knew about welite , got my tv repaired instantly tamharo bahu dhanyavaad kaleja!!</h4>
+            </div>
+            <div class="commentshotContainer">
+                <h4 class="commentname">@baburaovapte⭐⭐⭐⭐⭐</h4>
+                <h4 class="comment">eee deva , maine aaj hi 2 box khamba order kiya par unhe ghar kon le jaaye , phir yaad aaya ki ye saala welite se madad lelu </h4>
+            </div>
+            <div class="commentshotContainer">
+                <h4 class="commentname">@ironman999⭐⭐⭐⭐</h4>
+                <h4 class="comment">hey , last night my suit got some weird lights , so hired a lightman , he saved me as it was a shortcircuit,  thankyou mate! </h4>
+            </div>
+            <div class="commentshotContainer">
+                <h4 class="commentname">@salmankhan111⭐⭐⭐⭐⭐</h4>
+                <h4 class="comment">haha few days ago i thought of travelling in rajsthan , and needed a driver , thankyou welite i got him</h4>
+            </div>
+            <div class="commentshotContainer">
+                <h4 class="commentname">@johncena⭐⭐⭐⭐⭐</h4>
+                <h4 class="comment">hmmm today fight was with a badass lady so thought i should get facial , thankyou welite </h4>
+            </div>
+        </div>
+
+        <h1 style="margin-left: 5rem;">Get help today</h1>
+        <div id="serviceSuggessions" data-aos="fade-up" data-aos-duration="1000">
+            <a href = "workers.html?skill=Plumbing" class="protected-link"><div class="suggestion">Plumbing</div></a>
+            <a href = "workers.html?skill=Carpenter" class="protected-link"><div class="suggestion">Furniture assembly</div></a>
+            <a href = "workers.html?skill=Cleaning" class="protected-link"><div class="suggestion">Home cleaning</div></a>
+            <a href = "workers.html?skill=Electrician" class="protected-link"><div class="suggestion">Electrician</div></a>
+            <a href = "workers.html?skill=Electrician" class="protected-link"><div class="suggestion">Tv mounting</div></a>
+            <a href = "workers.html?skill=Electrician" class="protected-link"><div class="suggestion">Solar installation</div></a>
+            <a href = "workers.html?skill=Carpenter" class="protected-link"><div class="suggestion">Home repair</div></a>
+            <a href = "workers.html?skill=Carpenter" class="protected-link"><div class="suggestion">Sofa repair</div></a>
+            <a href = "workers.html?skill=Welding" class="protected-link"><div class="suggestion">Welding</div></a>
+        </div>
+        <h3 style="margin-left: 5rem; margin-bottom: 2rem;"><a href="services.html" style="text-decoration: none; color: rgb(51, 83, 2);">See All Services > </a></h3>
+    </main>
+    
+    <!-- ========== FOOTER ========== -->
+    <footer id="foot">
+         <div class="footer" data-aos="fade-up"
+     data-aos-duration="1000"> 
+  <div id="footerContent">
+
+    <div class="discover">   
+    <ul class="footerlist1">
+      <li>Services</li>
+      <li>About us</li>
+      <li>Freelance</li>
+      <li>shop</li>
+      <li>FAQ's</li>
+      <li>Help</li>
+   </ul>
+   </div>
+ 
+ <div class="addon">
+  <ul class="addonlist">
+    <li>Our partners</li>
+    <li>How we work</li>
+    <li>Career</li>
+</ul>
+</div>
+ 
+</div>
+
+<div class="rights">
+  @2025 welite.com inc All rights reserved
+</div>
+
+</div>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // This is for your animations
+    </script>
+    
+    <!-- These files are for later. We can leave them here. They are empty for now so they won't do anything. -->
+     <script src="js/app.js"></script> 
+    <script src="js/home.js"></script>
+     <script src="js/linkHandler.js"></script>
+</body>
+</html>
+

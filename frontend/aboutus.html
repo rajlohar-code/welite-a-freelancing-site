@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+       
+      margin: 0;
+      padding: 0;
+      background-color: #d6e9df;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 3rem;
+      margin-top: 3rem;
+    }
+
+    .logo-section img {
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+
+    .logo-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    .section p {
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .highlight-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .box h3 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div class="container">
+
+    <!-- Logo & Company Name -->
+    <div class="logo-section">
+      <img src="/images/logo1-removebg-preview.png" alt="Company Logo">
+       
+      <p>Your trusted partner for home and repair solutions</p>
+    </div>
+
+    <!-- Our Mission -->
+    <div class="section">
+      <h2>Our Mission</h2>
+      <p>
+        At Welite, our mission is to connect skilled professionals with customers who need reliable, on-demand home services. From carpentry to cleaning to event handling, we ensure quality, safety, and satisfaction in every visit.
+      </p>
+    </div>
+
+    <!-- What We Offer -->
+    <div class="section">
+      <h2>What We Offer</h2>
+      <div class="highlight-boxes">
+        <div class="box">
+          <h3>Verified Experts</h3>
+          <p>All service providers go through a strict verification process to ensure quality and safety.</p>
+        </div>
+        <div class="box">
+          <h3>On-Time Services</h3>
+          <p>We value your time. Our professionals show up when promised, every time.</p>
+        </div>
+        <div class="box">
+          <h3>Transparent Pricing</h3>
+          <p>No hidden charges. Pay what you see, and get what you expect.</p>
+        </div>
+        <div class="box">
+          <h3>Wide Range of Services</h3>
+          <p>From electricians to spa-at-home services, we’ve got you covered.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- About the Team -->
+    <div class="section">
+      <h2>Who We Are</h2>
+      <p>
+        Welite was started by a group of passionate people who wanted to make daily life easier for working families and individuals. We believe in fair opportunities for skilled workers and reliable service for every customer.
+      </p>
+    </div>
+
+  </div>
+  <script>
+  fetch("../navbar.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+    });
+</script>
+ 
+</body>
+</html>

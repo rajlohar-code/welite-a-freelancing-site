@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Profile</title>
+    <!-- The correct, working link for Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .profile-container { max-width: 700px; width: 100%; margin: 20px auto; background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; position: relative; }
+        .profile-header img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px; }
+        .profile-header h1 { margin: 10px 0 0; font-size: 2.5em; color: #333; }
+        .profile-header h2 { margin: 0 0 20px; font-size: 1.2em; font-weight: 400; color: #777; }
+        .profile-body { text-align: left; border-top: 1px solid #eee; padding-top: 20px; }
+        .profile-section { margin-bottom: 20px; }
+        .profile-section h3 { color: #555; font-size: 1.1em; margin-bottom: 5px; font-weight: 500; border-bottom: 2px solid #2c5c8a; padding-bottom: 5px; display: inline-block; }
+        .profile-section i { margin-right: 8px; color: #2c5c8a; }
+        .profile-section span, .profile-section p { color: #333; font-size: 1.2em; display: inline-block; }
+        .profile-section p { font-weight: 400; line-height: 1.6; margin-top: 5px; width: 100%;}
+        .action-btn { position: absolute; top: 20px; right: 20px; background-color: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 14px; }
+        .edit-field { width: 95%; padding: 8px; font-size: 1em; margin-top: 5px; display: none; border: 1px solid #ddd; border-radius: 4px;}
+        .price-context { display: inline-block; color: #333; font-size: 1.2em; }
+        .job-board { margin-top: 40px; text-align: left; }
+        .job-card { background-color: #fafafa; border: 1px solid #eee; border-left: 4px solid #3a7cb9; padding: 15px; border-radius: 5px; margin-bottom: 15px; }
+        .job-card p { margin: 5px 0; }
+        .job-card .client-info { font-size: 0.9em; color: #777; }
+        .job-status { font-weight: bold; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; color: white; }
+        .status-pending { background-color: #f0ad4e; }
+        .status-accepted { background-color: #5cb85c; }
+        /* --- NEW STYLE for Rejected status --- */
+        .status-rejected { background-color: #d9534f; } /* A nice red */
+        .job-actions { float: right; }
+        .job-actions button { margin-left: 10px; padding: 5px 10px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background-color: #f0f0f0; }
+        /* --- NEW STYLE for the final Delete button --- */
+        .final-delete-btn { background-color: #d9534f; color: white; border-color: #d43f3a; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
+        .modal-content textarea { width: 95%; height: 150px; padding: 10px; font-size: 1em; margin-bottom: 10px; }
+        .modal-content button { background-color: #2c5c8a; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <!-- The JS will put the "Edit Profile" or "Post a Job" button here -->
+        <div id="action-button-container"></div>
+        
+        <div class="profile-header">
+            <img id="profile-pic" src="images/profilepic.png" alt="Profile Picture">
+            <h1 id="profile-name">Loading...</h1>
+            <h2 id="profile-username">@loading...</h2>
+        </div>
+
+        <div class="profile-body">
+            <!-- All the sections for displaying and editing info -->
+            <div class="profile-section">
+                <h3><i class="fas fa-tools"></i> Skill</h3>
+                <span id="profile-skill-display">Loading...</span>
+                <input type="text" id="profile-skill-edit" class="edit-field">
+            </div>
+            <div class="profile-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+                <span id="profile-location-display">Loading...</span>
+                <input type="text" id="profile-location-edit" class="edit-field">
+            </div>
+            <div class="profile-section">
+                <h3><i class="fas fa-rupee-sign"></i> Rate</h3>
+                <span id="profile-price-display">Not set</span>
+                <span class="price-context"> per hour</span>
+                <input type="text" id="profile-price-edit" class="edit-field" placeholder="e.g., 500">
+            </div>
+            <div class="profile-section">
+                <h3><i class="fas fa-user"></i> About Me</h3>
+                <p id="profile-bio-display">Loading...</p>
+                <textarea id="profile-bio-edit" class="edit-field" rows="4"></textarea>
+            </div>
+        </div>
+
+        <!-- The "Job Request Board" section -->
+        <div class="job-board" id="job-board">
+            <h2>Job Requests</h2>
+            <div id="job-list">
+                <p>Loading requests...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Hidden pop-up form for posting a job -->
+    <div id="post-job-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Describe the Job</h2>
+            <form id="post-job-form">
+                <textarea id="problem-description" placeholder="Please describe your problem in detail.&#10;For example:&#10;- What is the problem? (e.g., My kitchen sink is leaking from the pipe below)&#10;- What materials are needed? (e.g., I have the new pipe, but you will need tools)&#10;- When are you available? (e.g., I am available this Saturday afternoon)"></textarea>
+                <button type="submit">Post Job Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- This is your perfect Butler script. It will manage this page. -->
+    <script src="js/freelancerProfile.js"></script>
+</body>
+</html>
+
